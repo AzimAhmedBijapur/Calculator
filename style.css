@@ -3,27 +3,38 @@
 } */
 body{
     display: flex;
-    justify-content: center; 
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center; 
     height:100vh;
     width: 100vw;
 }
 .calculator{
 
     display: flex;
+    margin: auto;
     flex-direction: column;    
-    flex-basis: 30%;
+    width: 30%;
     padding: 10px;
     height: 600px;
     border-radius:10px;
     background-color: grey;
 }
 .display{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
     height: 20px;
     background-color: lightcoral;
     flex-basis: 20%;
     margin: 20px;
     border-radius:10px;
+}
+.display div{
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    padding: 5px;
 }
 .controls{
     flex-basis: 80%;
@@ -57,4 +68,9 @@ body{
 }
 .lastrow{
     flex: 1;
+}
+footer{
+    font-size: 1.3rem;
+    color: darkslateblue;
+    margin-bottom: 30px;
 }
