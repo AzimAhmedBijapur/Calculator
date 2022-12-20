@@ -1,17 +1,38 @@
-var controls=document.querySelector('.controls');
+function sum(a,b){
+    return a+b;
+}
+function sub(a,b){
+    return a-b;
+}
+function mul(a,b){
+    return a*b;
+}
+function div(a,b){
+    return a/b;
+}
+function mod(a,b){
+    return a%b;
+}
+function clear(){
 
-// for(let i=0;i<5;i++){
+}
+function backspace(){
 
-//     var div=document.createElement('div');
+}
 
-//     div.classList.add('buttonRow');
+var num=document.querySelectorAll('.buttonCol[data-number]');
+console.log(num);
 
-//     controls.appendChild(div);
+for(let i=0;i<=9;i++){
 
-//     for(let j=0;j<5;j++){
+    num[i].addEventListener('click',()=>{
+        
+        console.log(num[i].getAttribute('data-number'));
 
-//         var buttonCol = document.createElement('div');
-//         buttonCol.classList.add('buttonCol');
-//         div.appendChild(buttonCol);
-//     }
-// }
+        var operation=document.querySelector('.operation')
+        
+        var alreadyThere=operation.textContent;
+        operation.textContent=alreadyThere+num[i].getAttribute('data-number');
+    })
+}
+
