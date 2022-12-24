@@ -72,6 +72,14 @@ body{
     /* box-shadow: 1.5px 1.5px 0px 0px lightgrey; */
     user-select: none;
 }
+.buttonRow .top{
+    background-color: orange;
+    
+}
+.buttonRow .across{
+    background-color: darkturquoise;
+    color: black;
+}
 .buttonCol:active {
   box-shadow: none;
   transform: translateY(4px);
