@@ -22,7 +22,7 @@ for(let i=0;i<=9;i++){
 
     num[i].addEventListener('click',()=>{
         
-        console.log(num[i].getAttribute('data-number'));
+        // console.log(num[i].getAttribute('data-number'));
 
         var operation=document.querySelector('.operation');
         
@@ -40,7 +40,7 @@ for(let i=0;i<6;i++){
 
         operator[i].addEventListener('click',()=>{
         
-        console.log(operator[i].getAttribute('data-value'));
+        // console.log(operator[i].getAttribute('data-value'));
 
         var operation=document.querySelector('.operation')
         
@@ -92,9 +92,9 @@ function operate(){
 
     var opcode = exp.split(RegExp("(?<=[-+*/%])|(?=[-+*/%])"));
 
-    var num=[];
+    var num=[];//Array of operands
 
-    var op=[];
+    var op=[];//Array of operators
 
     for(let i=0;i<opcode.length;i++){
 
@@ -109,58 +109,66 @@ function operate(){
 
     for(let i=0;i<opcode.length-1;i++){
 
+        //If no previous operations were done
+
         if(finalRes==0)
         {
             if(op[i]=='+'){
                 finalRes=sum(Number(num[i]),Number(num[i+1]));
-                console.log(finalRes,'add');
+                // console.log(finalRes,'add');
             }
             else if(op[i]=='-'){
                 finalRes=sub(Number(num[i]),Number(num[i+1]));
-                console.log(finalRes,'sub');
+                // console.log(finalRes,'sub');
             }
             else if(op[i]=='*'){
                 finalRes=mul(Number(num[i]),Number(num[i+1]));
-                console.log(finalRes,'mul');
+                // console.log(finalRes,'mul');
             }
             else if(op[i]=='/'){
                 finalRes=div(Number(num[i]),Number(num[i+1]));
-                console.log(finalRes,'div');
+                // console.log(finalRes,'div');
             }
             else if(op[i]=='%'){
                 finalRes=mod(Number(num[i]),Number(num[i+1]));
-                console.log(finalRes,'mod');
+                // console.log(finalRes,'mod');
             }
         }
         
+        //If there is a result of previous operation 
+
         else{
             if(op[i]=='+'){
                 finalRes=sum(Number(finalRes),Number(num[i+1]));
-                console.log(finalRes,'add');
+                // console.log(finalRes,'add');
             }
             else if(op[i]=='-'){
                 finalRes=sub(Number(finalRes),Number(num[i+1]));
-                console.log(finalRes,'sub');
+                // console.log(finalRes,'sub');
             }
             else if(op[i]=='*'){
                 finalRes=mul(Number(finalRes),Number(num[i+1]));
-                console.log(finalRes,'mul');
+                // console.log(finalRes,'mul');
             }
             else if(op[i]=='/'){
                 finalRes=div(Number(finalRes),Number(num[i+1]));
-                console.log(finalRes,'div');
+                // console.log(finalRes,'div');
             }
             else if(op[i]=='%'){
                 finalRes=mod(Number(finalRes),Number(num[i+1]));
-                console.log(finalRes,'mod');
+                // console.log(finalRes,'mod');
             }
         }
 
     }
     
+    //Update the result
+
     document.querySelector('.result').textContent=finalRes;
     document.querySelector('.operation').textContent=finalRes;
 }
+
+//Audio on click
 
 var buttons=document.querySelectorAll('.buttonCol');
 
