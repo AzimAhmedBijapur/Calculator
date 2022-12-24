@@ -14,6 +14,8 @@ function mod(a,b){
     return a%b;
 }
 
+// Input numbers
+
 var num=document.querySelectorAll('.buttonCol[data-number]');
 
 for(let i=0;i<=9;i++){
@@ -29,6 +31,8 @@ for(let i=0;i<=9;i++){
         operation.textContent=alreadyThere+num[i].getAttribute('data-number');
     })
 }
+
+//Input operators
 
 var operator = document.querySelectorAll('.buttonCol[data-value]');
 
@@ -56,6 +60,9 @@ clr.addEventListener('click',()=>{
 
     operation.textContent='';
 
+    var result= document.querySelector('.result');
+
+    result.textContent='';
 
 });
 
@@ -71,5 +78,87 @@ bsp.addEventListener('click',()=>{
 
     operation.textContent=content;
 
-
 });
+
+//Perform operation
+
+var eq= document.getElementById('equals');
+
+eq.addEventListener('click',operate);
+
+function operate(){
+
+    var exp=document.querySelector('.operation').textContent;
+
+    var opcode = exp.split(RegExp("(?<=[-+*/%])|(?=[-+*/%])"));
+
+    var num=[];
+
+    var op=[];
+
+    for(let i=0;i<opcode.length;i++){
+
+        if(isNaN(opcode[i]))
+        op.push(opcode[i]);
+
+        else
+        num.push(opcode[i]);
+    }
+
+    var finalRes=0;
+
+    for(let i=0;i<opcode.length-1;i++){
+
+        if(finalRes==0)
+        {
+            if(op[i]=='+'){
+                finalRes=sum(num[i],num[i+1]);
+                console.log(finalRes,'add');
+            }
+            else if(op[i]=='-'){
+                finalRes=sub(num[i],num[i+1]);
+                console.log(finalRes,'sub');
+            }
+            else if(op[i]=='*'){
+                finalRes=mul(num[i],num[i+1]);
+                console.log(finalRes,'mul');
+            }
+            else if(op[i]=='/'){
+                finalRes=div(num[i],num[i+1]);
+                console.log(finalRes,'div');
+            }
+            else if(op[i]=='%'){
+                finalRes=mod(num[i],num[i+1]);
+                console.log(finalRes,'mod');
+            }
+        }
+        
+        else{
+            if(op[i]=='+'){
+                finalRes=sum(Number(finalRes),Number(num[i+1]));
+                console.log(finalRes,'add');
+            }
+            else if(op[i]=='-'){
+                finalRes=sub(Number(finalRes),Number(num[i+1]));
+                console.log(finalRes,'sub');
+            }
+            else if(op[i]=='*'){
+                finalRes=mul(Number(finalRes),Number(num[i+1]));
+                console.log(finalRes,'mul');
+            }
+            else if(op[i]=='/'){
+                finalRes=div(Number(finalRes),Number(num[i+1]));
+                console.log(finalRes,'div');
+            }
+            else if(op[i]=='%'){
+                finalRes=mod(Number(finalRes),Number(num[i+1]));
+                console.log(finalRes,'mod');
+            }
+        }
+
+    }
+    
+    document.querySelector('.result').textContent=finalRes;
+}
+
+

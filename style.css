@@ -14,7 +14,7 @@ body{
     display: flex;
     margin: auto;
     flex-direction: column;    
-    width: 30%;
+    width: 25%;
     padding: 10px;
     height: 600px;
     border-radius:10px;
@@ -62,7 +62,7 @@ body{
     border-radius:10px;
     cursor: pointer;
     font-size: 2rem;
-    box-shadow: 1px 1px 0px 0px lightgrey;
+    box-shadow: 1.5px 1.5px 0px 0px lightgrey;
     user-select: none;
 }
 .buttonCol:active {
