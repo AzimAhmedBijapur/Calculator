@@ -1,6 +1,10 @@
 /* *{
     border: 1px solid red;
 } */
+@font-face {
+    font-family: digital;
+    src: url('./ds_digital/DS-DIGII.TTF');
+}
 body{
     display: flex;
     flex-direction: column;
@@ -23,7 +27,7 @@ body{
 .display{
     display: flex;
     flex-direction: column;
-    font-size: 1.5rem;
+    font-size: 2rem;
     height: 20px;
     background-color: lightcoral;
     flex-basis: 20%;
@@ -35,6 +39,9 @@ body{
     display: flex;
     justify-content: end;
     padding: 5px;
+    overflow: hidden;
+    user-select: none;
+    font-family:digital;
 }
 .controls{
     flex-basis: 80%;
@@ -62,7 +69,7 @@ body{
     border-radius:10px;
     cursor: pointer;
     font-size: 2rem;
-    box-shadow: 1.5px 1.5px 0px 0px lightgrey;
+    /* box-shadow: 1.5px 1.5px 0px 0px lightgrey; */
     user-select: none;
 }
 .buttonCol:active {
@@ -77,6 +84,6 @@ body{
 }
 footer{
     font-size: 1.3rem;
-    color:#17034f;
+    color:grey;
     margin-bottom: 30px;
 }

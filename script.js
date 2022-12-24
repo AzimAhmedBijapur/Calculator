@@ -112,23 +112,23 @@ function operate(){
         if(finalRes==0)
         {
             if(op[i]=='+'){
-                finalRes=sum(num[i],num[i+1]);
+                finalRes=sum(Number(num[i]),Number(num[i+1]));
                 console.log(finalRes,'add');
             }
             else if(op[i]=='-'){
-                finalRes=sub(num[i],num[i+1]);
+                finalRes=sub(Number(num[i]),Number(num[i+1]));
                 console.log(finalRes,'sub');
             }
             else if(op[i]=='*'){
-                finalRes=mul(num[i],num[i+1]);
+                finalRes=mul(Number(num[i]),Number(num[i+1]));
                 console.log(finalRes,'mul');
             }
             else if(op[i]=='/'){
-                finalRes=div(num[i],num[i+1]);
+                finalRes=div(Number(num[i]),Number(num[i+1]));
                 console.log(finalRes,'div');
             }
             else if(op[i]=='%'){
-                finalRes=mod(num[i],num[i+1]);
+                finalRes=mod(Number(num[i]),Number(num[i+1]));
                 console.log(finalRes,'mod');
             }
         }
@@ -159,6 +159,19 @@ function operate(){
     }
     
     document.querySelector('.result').textContent=finalRes;
+    document.querySelector('.operation').textContent=finalRes;
 }
 
+var buttons=document.querySelectorAll('.buttonCol');
 
+for(let i=0;i<buttons.length;i++){
+    
+    var audio=document.querySelector('audio');
+
+    buttons[i].addEventListener('click',()=>{
+
+        audio.play();
+        audio.currentTime=0;
+
+    })
+}
