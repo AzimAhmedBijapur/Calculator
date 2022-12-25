@@ -1,3 +1,5 @@
+// Mathematical operations
+
 function sum(a,b){
     return a+b;
 }
@@ -52,9 +54,7 @@ for(let i=0;i<6;i++){
 
 //Clear button
 
-var clr = document.getElementById('clr');
-
-clr.addEventListener('click',()=>{
+function clearIt(){
 
     var operation=document.querySelector('.operation');
 
@@ -64,21 +64,20 @@ clr.addEventListener('click',()=>{
 
     result.textContent='';
 
-});
+}
+
 
 //Backspace
 
-var bsp = document.getElementById('bsp');
-
-bsp.addEventListener('click',()=>{
+function backSpace(){
 
     var operation=document.querySelector('.operation');
 
     var content=operation.textContent.substring(0,operation.textContent.length-1);
 
     operation.textContent=content;
+}
 
-});
 
 //Perform operation
 
@@ -164,8 +163,18 @@ function operate(){
     
     //Update the result
 
-    document.querySelector('.result').textContent=finalRes;
-    document.querySelector('.operation').textContent=finalRes;
+    if(finalRes<100000000000000){
+
+        document.querySelector('.result').textContent=finalRes.toFixed(7);
+        document.querySelector('.operation').textContent=finalRes.toFixed(7);
+    }
+    else if(isNaN(finalRes)){
+
+        document.querySelector('.result').textContent='Invalid';
+    }
+    else{
+        document.querySelector('.result').textContent='Out of Range';
+    }
 }
 
 //Audio on click
@@ -183,3 +192,40 @@ for(let i=0;i<buttons.length;i++){
 
     })
 }
+//Adding key listeners
+
+document.addEventListener('keydown',e=>{
+
+    console.log(e.key);
+
+    e.preventDefault(); // Firefox has a default listener to '/'
+
+    var reg= new RegExp('[0-9]');
+
+    if(e.key==='Shift' ){
+
+        document.querySelector('.operation').textContent+='';
+    }
+    else if(e.key=='+'||e.key=='-'||e.key=='/'||e.key=='%'||e.key=='*'||e.key=='.')
+    {
+        document.querySelector('.operation').textContent+=e.key;
+    }
+    else if(e.key=='Enter'){
+
+        operate();
+    }
+    else if(e.key=='Escape'){
+        clearIt();
+    }
+    else if(e.key=='Backspace')
+    {
+        backSpace();
+    }
+    else if(e.key.match(reg)){
+
+        document.querySelector('.operation').textContent+=Number(e.key);
+    }
+    else{
+        document.querySelector('.operation').textContent+='';
+    }
+})
