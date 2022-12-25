@@ -163,7 +163,7 @@ function operate(){
     
     //Update the result
 
-    if(finalRes<100000000000000){
+    if(finalRes<2e53){
 
         document.querySelector('.result').textContent=finalRes.toFixed(7);
         document.querySelector('.operation').textContent=finalRes.toFixed(7);
